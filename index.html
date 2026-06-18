@@ -534,6 +534,7 @@ input[type=range]::-moz-range-thumb{
 </style>
 </head>
 <body>
+<a href="#screen-home" class="sr-only" style="position:absolute;left:-9999px">Skip to main content</a>
 
 <!-- Animated Margins Silhouettes (Interactive Awwwards features) -->
 <div class="bg-silhouette turbine-sil" onclick="triggerTurbineParticles(event)">
@@ -569,7 +570,7 @@ input[type=range]::-moz-range-thumb{
     </div>
     <h1>ecotrace.</h1>
     <p>your personal carbon footprint tracker</p>
-    <button class="btn btn-primary start-btn" id="startBtn" onclick="beginOnboarding()">
+    <button class="btn btn-primary start-btn" id="startBtn" onclick="beginOnboarding()" aria-label="Get started with EcoTrace">
       <span>get started</span>
       <span class="btn-arrow">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
@@ -590,10 +591,10 @@ input[type=range]::-moz-range-thumb{
       <h2>How do you usually get around?</h2>
       <p class="sub">Pick your primary mode of transport for daily commutes.</p>
       <div class="option-grid">
-        <button class="option-btn" data-q="transport" data-v="car" onclick="selectOption(this)"><span class="opt-icon">&#128663;</span>Car</button>
-        <button class="option-btn" data-q="transport" data-v="bike" onclick="selectOption(this)"><span class="opt-icon">&#127949;</span>Motorbike</button>
-        <button class="option-btn" data-q="transport" data-v="public" onclick="selectOption(this)"><span class="opt-icon">&#128652;</span>Public</button>
-        <button class="option-btn" data-q="transport" data-v="walk" onclick="selectOption(this)"><span class="opt-icon">&#128694;</span>Walk / Cycle</button>
+        <button class="option-btn" data-q="transport" data-v="car" onclick="selectOption(this)" aria-label="Select Car transport option"><span class="opt-icon">&#128663;</span>Car</button>
+        <button class="option-btn" data-q="transport" data-v="bike" onclick="selectOption(this)" aria-label="Select Motorbike transport option"><span class="opt-icon">&#127949;</span>Motorbike</button>
+        <button class="option-btn" data-q="transport" data-v="public" onclick="selectOption(this)" aria-label="Select Public transport option"><span class="opt-icon">&#128652;</span>Public</button>
+        <button class="option-btn" data-q="transport" data-v="walk" onclick="selectOption(this)" aria-label="Select Walk or Cycle transport option"><span class="opt-icon">&#128694;</span>Walk / Cycle</button>
       </div>
     </div>
 
@@ -603,7 +604,7 @@ input[type=range]::-moz-range-thumb{
       <p class="sub">Estimate your total weekly commute distance.</p>
       <div class="slider-wrap">
         <label><span>0 km</span><span>300 km</span></label>
-        <input type="range" min="0" max="300" value="50" id="distSlider" oninput="updateSlider('dist',this.value)">
+        <input type="range" min="0" max="300" value="50" id="distSlider" oninput="updateSlider('dist',this.value)" aria-label="Weekly travel distance in kilometers">
         <div class="val" id="distVal">50 km / week</div>
       </div>
     </div>
@@ -613,10 +614,10 @@ input[type=range]::-moz-range-thumb{
       <h2>What best describes your diet?</h2>
       <p class="sub">Your food choices have a big impact on your footprint.</p>
       <div class="option-grid">
-        <button class="option-btn" data-q="diet" data-v="heavy_meat" onclick="selectOption(this)"><span class="opt-icon">&#129385;</span>Heavy Meat</button>
-        <button class="option-btn" data-q="diet" data-v="moderate_meat" onclick="selectOption(this)"><span class="opt-icon">&#127831;</span>Some Meat</button>
-        <button class="option-btn" data-q="diet" data-v="vegetarian" onclick="selectOption(this)"><span class="opt-icon">&#129367;</span>Vegetarian</button>
-        <button class="option-btn" data-q="diet" data-v="vegan" onclick="selectOption(this)"><span class="opt-icon">&#127793;</span>Vegan</button>
+        <button class="option-btn" data-q="diet" data-v="heavy_meat" onclick="selectOption(this)" aria-label="Select Heavy Meat diet option"><span class="opt-icon">&#129385;</span>Heavy Meat</button>
+        <button class="option-btn" data-q="diet" data-v="moderate_meat" onclick="selectOption(this)" aria-label="Select Some Meat diet option"><span class="opt-icon">&#127831;</span>Some Meat</button>
+        <button class="option-btn" data-q="diet" data-v="vegetarian" onclick="selectOption(this)" aria-label="Select Vegetarian diet option"><span class="opt-icon">&#129367;</span>Vegetarian</button>
+        <button class="option-btn" data-q="diet" data-v="vegan" onclick="selectOption(this)" aria-label="Select Vegan diet option"><span class="opt-icon">&#127793;</span>Vegan</button>
       </div>
     </div>
 
@@ -626,7 +627,7 @@ input[type=range]::-moz-range-thumb{
       <p class="sub">Check your electricity bill -- look for kWh consumed.</p>
       <div class="slider-wrap">
         <label><span>0 kWh</span><span>500 kWh</span></label>
-        <input type="range" min="0" max="500" value="120" id="elecSlider" oninput="updateSlider('elec',this.value)">
+        <input type="range" min="0" max="500" value="120" id="elecSlider" oninput="updateSlider('elec',this.value)" aria-label="Monthly electricity usage in kWh">
         <div class="val" id="elecVal">120 kWh / month</div>
       </div>
     </div>
@@ -636,15 +637,15 @@ input[type=range]::-moz-range-thumb{
       <h2>How would you describe your shopping habits?</h2>
       <p class="sub">Think about clothing, gadgets, and online orders.</p>
       <div class="option-grid">
-        <button class="option-btn" data-q="shopping" data-v="high" onclick="selectOption(this)"><span class="opt-icon">&#128717;</span>Shopaholic</button>
-        <button class="option-btn" data-q="shopping" data-v="moderate" onclick="selectOption(this)"><span class="opt-icon">&#128722;</span>Moderate</button>
-        <button class="option-btn" data-q="shopping" data-v="low" onclick="selectOption(this)"><span class="opt-icon">&#9851;</span>Minimal</button>
-        <button class="option-btn" data-q="shopping" data-v="zero" onclick="selectOption(this)"><span class="opt-icon">&#129496;</span>Nearly Zero</button>
+        <button class="option-btn" data-q="shopping" data-v="high" onclick="selectOption(this)" aria-label="Select Shopaholic shopping option"><span class="opt-icon">&#128717;</span>Shopaholic</button>
+        <button class="option-btn" data-q="shopping" data-v="moderate" onclick="selectOption(this)" aria-label="Select Moderate shopping option"><span class="opt-icon">&#128722;</span>Moderate</button>
+        <button class="option-btn" data-q="shopping" data-v="low" onclick="selectOption(this)" aria-label="Select Minimal shopping option"><span class="opt-icon">&#9851;</span>Minimal</button>
+        <button class="option-btn" data-q="shopping" data-v="zero" onclick="selectOption(this)" aria-label="Select Nearly Zero shopping option"><span class="opt-icon">&#129496;</span>Nearly Zero</button>
       </div>
     </div>
 
     <div class="quiz-nav">
-      <button class="btn btn-ghost" id="quizBack" onclick="quizPrev()">
+      <button class="btn btn-ghost" id="quizBack" onclick="quizPrev()" aria-label="Go back to previous question">
         <span class="btn-arrow" style="transform: rotate(180deg)">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
             <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -653,7 +654,7 @@ input[type=range]::-moz-range-thumb{
         </span>
         <span>Back</span>
       </button>
-      <button class="btn btn-primary" id="quizNext" onclick="quizNext()">
+      <button class="btn btn-primary" id="quizNext" onclick="quizNext()" aria-label="Proceed to next question">
         <span>Next</span>
         <span class="btn-arrow">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
@@ -678,11 +679,11 @@ input[type=range]::-moz-range-thumb{
     </div>
     
     <!-- Header Navigation (Desktop only) -->
-    <nav class="header-nav">
-      <button class="nav-link active" data-screen="home" onclick="switchTab(this)">Home</button>
-      <button class="nav-link" data-screen="track" onclick="switchTab(this)">Track</button>
-      <button class="nav-link" data-screen="insights" onclick="switchTab(this)">Insights</button>
-      <button class="nav-link" data-screen="progress" onclick="switchTab(this)">Progress</button>
+    <nav class="header-nav" role="tablist">
+      <button class="nav-link active" role="tab" aria-selected="true" aria-label="Home screen" data-screen="home" onclick="switchTab(this)">Home</button>
+      <button class="nav-link" role="tab" aria-selected="false" aria-label="Track daily actions screen" data-screen="track" onclick="switchTab(this)">Track</button>
+      <button class="nav-link" role="tab" aria-selected="false" aria-label="Insights and recommendations screen" data-screen="insights" onclick="switchTab(this)">Insights</button>
+      <button class="nav-link" role="tab" aria-selected="false" aria-label="Your progress screen" data-screen="progress" onclick="switchTab(this)">Progress</button>
     </nav>
 
     <div id="streakBadge" class="streak-badge">
@@ -713,7 +714,7 @@ input[type=range]::-moz-range-thumb{
           </div>
 
           <div class="score-ring" id="scoreRing">
-            <svg viewBox="0 0 200 200">
+            <svg viewBox="0 0 200 200" role="img" aria-label="Carbon footprint score ring">
               <circle class="track" cx="100" cy="100" r="88"/>
               <circle class="fill-ring" id="ringFill" cx="100" cy="100" r="88"
                 stroke-dasharray="553" stroke-dashoffset="553"/>
@@ -747,7 +748,7 @@ input[type=range]::-moz-range-thumb{
             <h3 id="otTitle">Loading your top action...</h3>
             <p id="otDesc"></p>
             <div class="ot-btn-wrap">
-              <button class="ot-btn" onclick="switchTab(document.querySelector('[data-screen=\'track\']'))">take action</button>
+              <button class="ot-btn" onclick="switchTab(document.querySelector('[data-screen=\'track\']'))" aria-label="Take action on your #1 recommendation">take action</button>
             </div>
           </div>
 
@@ -921,20 +922,20 @@ input[type=range]::-moz-range-thumb{
 </div>
 
 <nav id="bottom-nav" style="display:none">
-  <div class="nav-inner">
-    <button class="nav-tab active" data-screen="home" onclick="switchTab(this)">
+  <div class="nav-inner" role="tablist">
+    <button class="nav-tab active" role="tab" aria-selected="true" aria-label="Home screen" data-screen="home" onclick="switchTab(this)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
       <span>Home</span>
     </button>
-    <button class="nav-tab" data-screen="track" onclick="switchTab(this)">
+    <button class="nav-tab" role="tab" aria-selected="false" aria-label="Track daily actions screen" data-screen="track" onclick="switchTab(this)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
       <span>Track</span>
     </button>
-    <button class="nav-tab" data-screen="insights" onclick="switchTab(this)">
+    <button class="nav-tab" role="tab" aria-selected="false" aria-label="Insights and recommendations screen" data-screen="insights" onclick="switchTab(this)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
       <span>Insights</span>
     </button>
-    <button class="nav-tab" data-screen="progress" onclick="switchTab(this)">
+    <button class="nav-tab" role="tab" aria-selected="false" aria-label="Your progress screen" data-screen="progress" onclick="switchTab(this)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
       <span>Progress</span>
     </button>
@@ -942,33 +943,41 @@ input[type=range]::-moz-range-thumb{
 </nav>
 
 <script>
-var INDIA_AVG = 1900;
-var GLOBAL_AVG = 4000;
 
-var TRANSPORT_FACTORS = {
+function sanitize(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+
+const INDIA_AVG = 1900;
+const GLOBAL_AVG = 4000;
+
+const TRANSPORT_FACTORS = {
   car: 0.171,
   bike: 0.072,
   public: 0.039,
   walk: 0
 };
 
-var DIET_MONTHLY = {
+const DIET_MONTHLY = {
   heavy_meat: 220,
   moderate_meat: 150,
   vegetarian: 105,
   vegan: 70
 };
 
-var ELEC_FACTOR = 0.82;
+const ELEC_FACTOR = 0.82;
 
-var SHOPPING_MONTHLY = {
+const SHOPPING_MONTHLY = {
   high: 120,
   moderate: 65,
   low: 25,
   zero: 8
 };
 
-var ECO_ACTIONS = [
+const ECO_ACTIONS = [
   { id:'skip_meat',    emoji:'\u{1F957}', name:'Skipped meat today',                save:2500, tip:'A day without meat saves ~2.5 kg CO2 -- equal to driving 14 km less.' },
   { id:'public_trans', emoji:'\u{1F68C}', name:'Used public transport',             save:1800, tip:'Taking the bus instead of driving saves about 1.8 kg CO2 per trip.' },
   { id:'no_plastic',   emoji:'\u{1F6AB}', name:'Avoided single-use plastic',        save:100,  tip:'Each plastic bag avoided saves ~100g CO2 from production & disposal.' },
@@ -981,7 +990,7 @@ var ECO_ACTIONS = [
   { id:'no_order',     emoji:'\u{1F4E6}', name:'Avoided online ordering today',     save:600,  tip:'Each delivery van trip produces ~600g CO2 -- order less, save more.' }
 ];
 
-var CATEGORY_TIPS = {
+const CATEGORY_TIPS = {
   transport: [
     { title:'Switch to metro just twice a week', body:'Replacing 2 car trips with metro saves about 12 kg CO2 per month -- like planting a tree every 2 months.', icon:'\u{1F687}' },
     { title:'Try carpooling for your commute', body:'Sharing a ride with just one person cuts your transport emissions in half -- saving 25+ kg CO2/month.', icon:'\u{1F697}' },
@@ -1008,7 +1017,7 @@ var CATEGORY_TIPS = {
   ]
 };
 
-var MOCK_USERS = [
+const MOCK_USERS = [
   { name:'Priya S.', avatar:'\u{1F338}', score:42500 },
   { name:'Arjun M.', avatar:'\u{1F525}', score:38200 },
   { name:'Ananya R.', avatar:'\u{1F33F}', score:35800 },
@@ -1026,7 +1035,7 @@ var MOCK_USERS = [
   { name:'Ritu W.', avatar:'\u{1F99A}', score:3800 }
 ];
 
-var state = {
+let state = {
   onboarded: false,
   profile: { transport:'car', distance:50, diet:'moderate_meat', electricity:120, shopping:'moderate' },
   footprint: { transport:0, diet:0, electricity:0, shopping:0, total:0 },
@@ -1035,22 +1044,22 @@ var state = {
   lastActiveDate: null
 };
 
-var quizStep = 0;
-var TOTAL_STEPS = 5;
-var weekChart = null;
+let quizStep = 0;
+const TOTAL_STEPS = 5;
+let weekChart = null;
 
 // Three.js State variables
-var threeInitialized = false;
-var scene, camera, renderer, islandGroup;
-var dynamicMeshes = [];
-var turbineRotors = [];
-var rotatingCarGroup = null;
+let threeInitialized = false;
+let scene, camera, renderer, islandGroup;
+let dynamicMeshes = [];
+let turbineRotors = [];
+let rotatingCarGroup = null;
 
 function saveState() {
   localStorage.setItem('ecotrace_state', JSON.stringify(state));
 }
 function loadState() {
-  var raw = localStorage.getItem('ecotrace_state');
+  const raw = localStorage.getItem('ecotrace_state');
   if (raw) {
     try { state = JSON.parse(raw); } catch(e) {}
   }
@@ -1073,7 +1082,7 @@ function init() {
 }
 
 function getGreeting() {
-  var h = new Date().getHours();
+  const h = new Date().getHours();
   if (h < 12) return 'good morning';
   if (h < 17) return 'good afternoon';
   return 'good evening';
@@ -1089,9 +1098,9 @@ function formatDate(dateStr) {
   return new Date(dateStr + 'T12:00:00').toLocaleDateString('en-US', { weekday:'long', month:'long', day:'numeric' });
 }
 function getLast7Days() {
-  var days = [];
-  for (var i = 6; i >= 0; i--) {
-    var d = new Date(); d.setDate(d.getDate() - i);
+  const days = [];
+  for (let i = 6; i >= 0; i--) {
+    const d = new Date(); d.setDate(d.getDate() - i);
     days.push(d.toISOString().split('T')[0]);
   }
   return days;
@@ -1105,10 +1114,10 @@ function beginOnboarding() {
 }
 
 function renderQuiz() {
-  var prog = document.getElementById('quizProgress');
+  const prog = document.getElementById('quizProgress');
   prog.innerHTML = '';
-  for (var i = 0; i < TOTAL_STEPS; i++) {
-    var dot = document.createElement('div');
+  for (let i = 0; i < TOTAL_STEPS; i++) {
+    const dot = document.createElement('div');
     dot.className = 'dot' + (i < quizStep ? ' done' : '') + (i === quizStep ? ' active' : '');
     prog.appendChild(dot);
   }
@@ -1120,8 +1129,8 @@ function renderQuiz() {
 }
 
 function selectOption(btn) {
-  var q = btn.dataset.q;
-  var v = btn.dataset.v;
+  const q = btn.dataset.q;
+  const v = btn.dataset.v;
   state.profile[q] = v;
   btn.parentElement.querySelectorAll('.option-btn').forEach(function(b) { b.classList.remove('selected'); });
   btn.classList.add('selected');
@@ -1129,10 +1138,10 @@ function selectOption(btn) {
 
 // Sparkle/Leaf Physics Particle Emitter
 function spawnParticles(x, y, isLeaf) {
-  var colors = isLeaf ? ['#8ed462','#6fa64d','#ffffff'] : ['#2ba0ff','#ff705d','#f5e211','#ebc1ff','#8ed462','#ffffff'];
-  var count = isLeaf ? 15 : 10;
-  for (var i = 0; i < count; i++) {
-    var el = document.createElement('div');
+  const colors = isLeaf ? ['#8ed462','#6fa64d','#ffffff'] : ['#2ba0ff','#ff705d','#f5e211','#ebc1ff','#8ed462','#ffffff'];
+  const count = isLeaf ? 15 : 10;
+  for (let i = 0; i < count; i++) {
+    const el = document.createElement('div');
     el.className = 'confetti-piece';
     el.style.left = x + 'px';
     el.style.top = y + 'px';
@@ -1142,10 +1151,10 @@ function spawnParticles(x, y, isLeaf) {
     el.style.width = (isLeaf ? (6 + Math.random() * 8) : (5 + Math.random() * 6)) + 'px';
     el.style.height = (isLeaf ? (10 + Math.random() * 10) : (5 + Math.random() * 6)) + 'px';
     
-    var angle = Math.random() * Math.PI * 2;
-    var speed = (isLeaf ? 1.5 : 2.5) + Math.random() * 4;
-    var vx = Math.cos(angle) * speed;
-    var vy = Math.sin(angle) * speed - 1.5;
+    const angle = Math.random() * Math.PI * 2;
+    const speed = (isLeaf ? 1.5 : 2.5) + Math.random() * 4;
+    const vx = Math.cos(angle) * speed;
+    const vy = Math.sin(angle) * speed - 1.5;
     
     el.style.position = 'fixed';
     el.style.zIndex = '9999';
@@ -1157,9 +1166,9 @@ function spawnParticles(x, y, isLeaf) {
 }
 
 function animateParticle(el, vx, vy, gravity, friction, life) {
-  var x = parseFloat(el.style.left);
-  var y = parseFloat(el.style.top);
-  var currentLife = 0;
+  let x = parseFloat(el.style.left);
+  let y = parseFloat(el.style.top);
+  let currentLife = 0;
   function step() {
     vy += gravity;
     vx *= friction;
@@ -1209,7 +1218,7 @@ function updateSlider(type, val) {
 
 // Function to handle switching tabs and updating classes
 function switchTab(btn) {
-  var target = btn.dataset.screen;
+  const target = btn.dataset.screen;
   
   // Update active class on both header links and bottom tabs
   document.querySelectorAll('[data-screen]').forEach(function(t) {
@@ -1263,11 +1272,11 @@ function finishOnboarding() {
 }
 
 function calculateFootprint() {
-  var p = state.profile;
-  var transport = p.distance * (TRANSPORT_FACTORS[p.transport] || 0) * 4.33;
-  var diet = DIET_MONTHLY[p.diet] || 150;
-  var electricity = p.electricity * ELEC_FACTOR;
-  var shopping = SHOPPING_MONTHLY[p.shopping] || 65;
+  const p = state.profile;
+  const transport = p.distance * (TRANSPORT_FACTORS[p.transport] || 0) * 4.33;
+  const diet = DIET_MONTHLY[p.diet] || 150;
+  const electricity = p.electricity * ELEC_FACTOR;
+  const shopping = SHOPPING_MONTHLY[p.shopping] || 65;
   state.footprint = {
     transport: Math.round(transport),
     diet: Math.round(diet),
@@ -1280,22 +1289,22 @@ function calculateFootprint() {
 
 function renderHome() {
   document.getElementById('greetingText').textContent = getGreeting();
-  var totalMonthly = state.footprint.total;
+  const totalMonthly = state.footprint.total;
   animateCount('scoreNum', 0, totalMonthly, 1800);
-  var maxRing = 600;
-  var pct = Math.min(totalMonthly / maxRing, 1);
-  var circumference = 553;
+  const maxRing = 600;
+  const pct = Math.min(totalMonthly / maxRing, 1);
+  const circumference = 553;
   setTimeout(function() {
     document.getElementById('ringFill').style.strokeDashoffset = circumference * (1 - pct);
   }, 200);
-  var yearly = totalMonthly * 12;
-  var lbl = '';
+  const yearly = totalMonthly * 12;
+  let lbl = '';
   if (yearly < INDIA_AVG) lbl = '⭐ Below India average!';
   else if (yearly < GLOBAL_AVG) lbl = '👍 Below global average';
   else lbl = '⚠️ Above global average';
-  document.getElementById('scoreLbl').textContent = lbl;
-  document.getElementById('cmpYou').textContent = yearly.toLocaleString() + ' kg';
-  document.getElementById('headerStreakVal').textContent = state.streak || 0;
+  document.getElementById('scoreLbl').textContent = sanitize(lbl);
+  document.getElementById('cmpYou').textContent = sanitize(yearly.toLocaleString() + ' kg');
+  document.getElementById('headerStreakVal').textContent = sanitize(state.streak || 0);
   renderOneThing();
   updateHomeSaved();
   renderMiniLeaderboard();
@@ -1305,38 +1314,38 @@ function renderHome() {
 }
 
 function renderOneThing() {
-  var f = state.footprint;
-  var cats = [
+  const f = state.footprint;
+  const cats = [
     { key:'transport', val:f.transport, label:'Transport' },
     { key:'diet', val:f.diet, label:'Diet' },
     { key:'electricity', val:f.electricity, label:'Electricity' },
     { key:'shopping', val:f.shopping, label:'Shopping' }
   ].sort(function(a,b) { return b.val - a.val; });
-  var top = cats[0];
-  var pctVal = Math.round((top.val / f.total) * 100);
-  var tips = CATEGORY_TIPS[top.key];
-  var dayOfYear = Math.floor((Date.now() - new Date(new Date().getFullYear(),0,0)) / 86400000);
-  var tip = tips[dayOfYear % tips.length];
+  const top = cats[0];
+  const pctVal = Math.round((top.val / f.total) * 100);
+  const tips = CATEGORY_TIPS[top.key];
+  const dayOfYear = Math.floor((Date.now() - new Date(new Date().getFullYear(),0,0)) / 86400000);
+  const tip = tips[dayOfYear % tips.length];
   document.getElementById('otTitle').textContent = tip.title;
   document.getElementById('otDesc').textContent = 'Your ' + top.label.toLowerCase() + ' is ' + pctVal + '% of your footprint. ' + tip.body;
 }
 
 function updateHomeSaved() {
-  var saved = getTodaySaved();
+  const saved = getTodaySaved();
   document.getElementById('homeSaved').textContent = formatSaved(saved);
-  var eqText = document.getElementById('eqText');
+  const eqText = document.getElementById('eqText');
   if (saved === 0) {
     eqText.innerHTML = 'Complete eco-actions in the <strong>Track</strong> tab to see your impact here!';
   } else {
-    var km = (saved / 171).toFixed(1);
-    eqText.innerHTML = 'You saved the equivalent of <strong>not driving ' + km + ' km</strong> today -- keep it up! 🌟';
+    const km = (saved / 171).toFixed(1);
+    eqText.innerHTML = 'You saved the equivalent of <strong>not driving ' + sanitize(km) + ' km</strong> today -- keep it up! 🌟';
   }
 }
 
 function getTodaySaved() {
-  var today = todayKey();
-  var todayActions = state.actions[today] || {};
-  var total = 0;
+  const today = todayKey();
+  const todayActions = state.actions[today] || {};
+  let total = 0;
   ECO_ACTIONS.forEach(function(a) {
     if (todayActions[a.id]) total += a.save;
   });
@@ -1344,9 +1353,9 @@ function getTodaySaved() {
 }
 
 function getAllTimeSaved() {
-  var total = 0;
+  let total = 0;
   Object.keys(state.actions).forEach(function(dateKey) {
-    var dayActions = state.actions[dateKey];
+    const dayActions = state.actions[dateKey];
     ECO_ACTIONS.forEach(function(a) {
       if (dayActions[a.id]) total += a.save;
     });
@@ -1360,13 +1369,13 @@ function formatSaved(grams) {
 }
 
 function animateCount(elId, from, to, duration) {
-  var el = document.getElementById(elId);
-  var start = performance.now();
-  var range = to - from;
+  const el = document.getElementById(elId);
+  const start = performance.now();
+  const range = to - from;
   function step(now) {
-    var elapsed = now - start;
-    var progress = Math.min(elapsed / duration, 1);
-    var eased = 1 - Math.pow(1 - progress, 3);
+    const elapsed = now - start;
+    const progress = Math.min(elapsed / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
     el.textContent = Math.round(from + range * eased).toLocaleString();
     if (progress < 1) requestAnimationFrame(step);
   }
@@ -1374,15 +1383,15 @@ function animateCount(elId, from, to, duration) {
 }
 
 function renderTrack() {
-  var today = todayKey();
+  const today = todayKey();
   document.getElementById('trackDate').textContent = formatDate(today);
   updateStreak();
-  var list = document.getElementById('actionList');
+  const list = document.getElementById('actionList');
   list.innerHTML = '';
-  var todayActions = state.actions[today] || {};
+  const todayActions = state.actions[today] || {};
   ECO_ACTIONS.forEach(function(action) {
-    var checked = !!todayActions[action.id];
-    var item = document.createElement('div');
+    const checked = !!todayActions[action.id];
+    const item = document.createElement('div');
     item.className = 'action-item' + (checked ? ' checked' : '');
     item.onclick = function(e) { toggleAction(action.id, e); };
     item.innerHTML = '<div class="action-check"><svg viewBox="0 0 24 24" fill="none" stroke="var(--charcoal)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><div class="action-info"><div class="ai-name">' + action.name + '</div><div class="ai-save">Saves ' + formatSaved(action.save) + ' CO2</div></div><div class="action-emoji">' + action.emoji + '</div>';
@@ -1392,7 +1401,7 @@ function renderTrack() {
 }
 
 function toggleAction(actionId, event) {
-  var today = todayKey();
+  const today = todayKey();
   if (!state.actions[today]) state.actions[today] = {};
   state.actions[today][actionId] = !state.actions[today][actionId];
   if (!state.actions[today][actionId]) delete state.actions[today][actionId];
@@ -1400,34 +1409,34 @@ function toggleAction(actionId, event) {
   renderTrack();
   updateHomeSaved();
   if (state.actions[today] && state.actions[today][actionId]) {
-    var x = event ? event.clientX : window.innerWidth / 2;
-    var y = event ? event.clientY : window.innerHeight / 2;
+    let x = event ? event.clientX : window.innerWidth / 2;
+    let y = event ? event.clientY : window.innerHeight / 2;
     spawnParticles(x, y, false);
   }
 }
 
 function updateTrackTotal() {
-  var saved = getTodaySaved();
+  const saved = getTodaySaved();
   document.getElementById('trackTotal').textContent = formatSaved(saved);
-  var eqIcon = document.getElementById('trackEqIcon');
-  var eqText = document.getElementById('trackEqText');
+  const eqIcon = document.getElementById('trackEqIcon');
+  const eqText = document.getElementById('trackEqText');
   if (saved === 0) {
     eqIcon.textContent = '💤';
     eqText.innerHTML = 'Check off actions above to start saving!';
   } else {
-    var km = (saved / 171).toFixed(1);
-    var mins = Math.round(saved / 83);
+    const km = (saved / 171).toFixed(1);
+    const mins = Math.round(saved / 83);
     eqIcon.textContent = '🎉';
-    eqText.innerHTML = 'That\'s like <strong>skipping a ' + km + ' km car ride</strong> or <strong>' + mins + ' fewer minutes of video streaming</strong>!';
+    eqText.innerHTML = 'That\'s like <strong>skipping a ' + sanitize(km) + ' km car ride</strong> or <strong>' + sanitize(mins) + ' fewer minutes of video streaming</strong>!';
   }
 }
 
 function updateStreak() {
-  var today = todayKey();
+  const today = todayKey();
   if (state.lastActiveDate !== today) {
-    var yesterday = new Date();
+    const yesterday = new Date();
     yesterday.setDate(yesterday.getDate() - 1);
-    var yKey = yesterday.toISOString().split('T')[0];
+    const yKey = yesterday.toISOString().split('T')[0];
     if (state.lastActiveDate === yKey) {
       state.streak = (state.streak || 0) + 1;
     } else if (state.lastActiveDate !== today) {
@@ -1440,28 +1449,28 @@ function updateStreak() {
 }
 
 function renderInsights() {
-  var f = state.footprint;
-  var cats = [
+  const f = state.footprint;
+  const cats = [
     { key:'transport', val:f.transport, label:'Transport', color:'var(--blue)' },
     { key:'diet', val:f.diet, label:'Diet', color:'var(--yellow)' },
     { key:'electricity', val:f.electricity, label:'Electricity', color:'var(--green)' },
     { key:'shopping', val:f.shopping, label:'Shopping', color:'var(--red)' }
   ].sort(function(a,b) { return b.val - a.val; });
-  var top = cats[0];
-  var pctVal = Math.round((top.val / f.total) * 100);
-  var dayOfYear = Math.floor((Date.now() - new Date(new Date().getFullYear(),0,0)) / 86400000);
-  var tips = CATEGORY_TIPS[top.key];
-  var mainTip = tips[dayOfYear % tips.length];
-  document.getElementById('insightCat').textContent = '🎯 Highest: ' + top.label + ' (' + pctVal + '%)';
-  document.getElementById('insightTitle').textContent = mainTip.title;
-  document.getElementById('insightBody').textContent = mainTip.body;
-  var barsEl = document.getElementById('breakdownBars');
+  const top = cats[0];
+  const pctVal = Math.round((top.val / f.total) * 100);
+  const dayOfYear = Math.floor((Date.now() - new Date(new Date().getFullYear(),0,0)) / 86400000);
+  const tips = CATEGORY_TIPS[top.key];
+  const mainTip = tips[dayOfYear % tips.length];
+  document.getElementById('insightCat').textContent = '🎯 Highest: ' + sanitize(top.label) + ' (' + sanitize(pctVal) + '%)';
+  document.getElementById('insightTitle').textContent = sanitize(mainTip.title);
+  document.getElementById('insightBody').textContent = sanitize(mainTip.body);
+  const barsEl = document.getElementById('breakdownBars');
   barsEl.innerHTML = '';
   cats.forEach(function(cat) {
-    var p = Math.round((cat.val / f.total) * 100);
-    var bar = document.createElement('div');
+    const p = Math.round((cat.val / f.total) * 100);
+    const bar = document.createElement('div');
     bar.className = 'ib-bar';
-    bar.innerHTML = '<div class="ib-top"><span>' + cat.label + '</span><span>' + cat.val + ' kg/mo (' + p + '%)</span></div><div class="ib-track"><div class="ib-fill" style="background:' + cat.color + '" data-width="' + p + '%"></div></div>';
+    bar.innerHTML = '<div class="ib-top"><span>' + sanitize(cat.label) + '</span><span>' + sanitize(cat.val) + ' kg/mo (' + sanitize(p) + '%)</span></div><div class="ib-track"><div class="ib-fill" style="background:' + cat.color + '" data-width="' + sanitize(p) + '%"></div></div>';
     barsEl.appendChild(bar);
   });
   setTimeout(function() {
@@ -1469,22 +1478,22 @@ function renderInsights() {
       el.style.width = el.dataset.width;
     });
   }, 200);
-  var tipsList = document.getElementById('tipsList');
+  const tipsList = document.getElementById('tipsList');
   tipsList.innerHTML = '';
   cats.forEach(function(cat) {
-    var catTips = CATEGORY_TIPS[cat.key];
-    var tip = catTips[(dayOfYear + 1) % catTips.length];
-    var card = document.createElement('div');
+    const catTips = CATEGORY_TIPS[cat.key];
+    const tip = catTips[(dayOfYear + 1) % catTips.length];
+    const card = document.createElement('div');
     card.className = 'tip-card';
-    card.innerHTML = '<div class="tc-icon">' + tip.icon + '</div><h4>' + tip.title + '</h4><p>' + tip.body + '</p>';
+    card.innerHTML = '<div class="tc-icon">' + sanitize(tip.icon) + '</div><h4>' + sanitize(tip.title) + '</h4><p>' + sanitize(tip.body) + '</p>';
     tipsList.appendChild(card);
   });
 }
 
 function renderProgress() {
-  var streak = state.streak || 0;
-  var totalSaved = getAllTimeSaved();
-  var treesEquiv = (totalSaved / 1000 / 21 * 12).toFixed(1);
+  const streak = state.streak || 0;
+  const totalSaved = getAllTimeSaved();
+  const treesEquiv = (totalSaved / 1000 / 21 * 12).toFixed(1);
   document.getElementById('statStreak').textContent = streak;
   document.getElementById('statTrees').textContent = treesEquiv;
   document.getElementById('statTotal').textContent = formatSaved(totalSaved);
@@ -1493,15 +1502,15 @@ function renderProgress() {
 }
 
 function renderWeekChart() {
-  var days = getLast7Days();
-  var data = days.map(function(d) {
-    var dayActions = state.actions[d] || {};
-    var total = 0;
+  const days = getLast7Days();
+  const data = days.map(function(d) {
+    const dayActions = state.actions[d] || {};
+    let total = 0;
     ECO_ACTIONS.forEach(function(a) { if (dayActions[a.id]) total += a.save; });
     return total / 1000;
   });
-  var labels = days.map(function(d) { return dayName(d); });
-  var ctx = document.getElementById('weekChart').getContext('2d');
+  const labels = days.map(function(d) { return dayName(d); });
+  const ctx = document.getElementById('weekChart').getContext('2d');
   if (weekChart) weekChart.destroy();
   weekChart = new Chart(ctx, {
     type: 'bar',
@@ -1560,65 +1569,65 @@ function getUserScore() {
 }
 
 function getLeaderboardWithUser() {
-  var userScore = getUserScore();
-  var allUsers = MOCK_USERS.map(function(u) { return { name:u.name, avatar:u.avatar, score:u.score, isUser:false }; });
+  const userScore = getUserScore();
+  const allUsers = MOCK_USERS.map(function(u) { return { name:u.name, avatar:u.avatar, score:u.score, isUser:false }; });
   allUsers.push({ name: 'You', avatar: '\u{1F49A}', score: userScore, isUser: true });
   allUsers.sort(function(a, b) { return b.score - a.score; });
   return allUsers;
 }
 
 function getUserRank() {
-  var sorted = getLeaderboardWithUser();
+  const sorted = getLeaderboardWithUser();
   return sorted.findIndex(function(u) { return u.isUser; }) + 1;
 }
 
 function renderMiniLeaderboard() {
-  var sorted = getLeaderboardWithUser();
-  var container = document.getElementById('lbMiniRows');
+  const sorted = getLeaderboardWithUser();
+  const container = document.getElementById('lbMiniRows');
   container.innerHTML = '';
-  var top3 = sorted.slice(0, 3);
-  var userIdx = sorted.findIndex(function(u) { return u.isUser; });
-  var showUsers = top3.slice();
+  const top3 = sorted.slice(0, 3);
+  const userIdx = sorted.findIndex(function(u) { return u.isUser; });
+  const showUsers = top3.slice();
   if (userIdx >= 3) showUsers.push(sorted[userIdx]);
   showUsers.forEach(function(u, i) {
-    var rank = u.isUser ? userIdx + 1 : i + 1;
-    var row = document.createElement('div');
+    const rank = u.isUser ? userIdx + 1 : i + 1;
+    const row = document.createElement('div');
     row.className = 'lb-row' + (u.isUser ? ' you-row' : '');
-    row.innerHTML = '<div class="lb-rank">' + rank + '</div><div class="lb-avatar">' + u.avatar + '</div><div class="lb-name">' + u.name + '</div><div class="lb-score">' + formatSaved(u.score) + '</div>';
+    row.innerHTML = '<div class="lb-rank">' + sanitize(rank) + '</div><div class="lb-avatar">' + sanitize(u.avatar) + '</div><div class="lb-name">' + sanitize(u.name) + '</div><div class="lb-score">' + sanitize(formatSaved(u.score)) + '</div>';
     container.appendChild(row);
   });
 }
 
 function renderFullLeaderboard() {
-  var sorted = getLeaderboardWithUser();
-  var userRank = sorted.findIndex(function(u) { return u.isUser; }) + 1;
-  var totalUsers = 1000;
-  var podium = document.getElementById('lbPodium');
+  const sorted = getLeaderboardWithUser();
+  const userRank = sorted.findIndex(function(u) { return u.isUser; }) + 1;
+  const totalUsers = 1000;
+  const podium = document.getElementById('lbPodium');
   podium.innerHTML = '';
-  var medals = ['🥈', '🥇', '🥉'];
-  var top3 = sorted.slice(0, 3);
-  var podiumOrder = [top3[1], top3[0], top3[2]].filter(Boolean);
+  const medals = ['🥈', '🥇', '🥉'];
+  const top3 = sorted.slice(0, 3);
+  const podiumOrder = [top3[1], top3[0], top3[2]].filter(Boolean);
   podiumOrder.forEach(function(u, i) {
-    var actualRank = i === 1 ? 0 : i === 0 ? 1 : 2;
-    var item = document.createElement('div');
+    const actualRank = i === 1 ? 0 : i === 0 ? 1 : 2;
+    const item = document.createElement('div');
     item.className = 'podium-item' + (actualRank === 0 ? ' first' : '') + (u.isUser ? ' you-row' : '');
-    item.innerHTML = '<div class="pi-medal">' + medals[i] + '</div><div class="pi-name">' + u.name + '</div><div class="pi-score">' + formatSaved(u.score) + '</div>';
+    item.innerHTML = '<div class="pi-medal">' + sanitize(medals[i]) + '</div><div class="pi-name">' + sanitize(u.name) + '</div><div class="pi-score">' + sanitize(formatSaved(u.score)) + '</div>';
     podium.appendChild(item);
   });
   document.getElementById('yrRank').textContent = '#' + userRank;
-  var percentile = Math.round(((totalUsers - userRank) / totalUsers) * 100);
-  var msg = '';
+  const percentile = Math.round(((totalUsers - userRank) / totalUsers) * 100);
+  const msg = '';
   if (userRank <= 3) msg = '🏆 You\'re in the top 3! Absolutely incredible dedication to the planet!';
   else if (userRank <= 10) msg = '🌟 Top ' + userRank + '! You\'re outperforming ' + percentile + '% of users. Amazing work!';
   else if (percentile >= 50) msg = '👏 You\'re ahead of ' + percentile + '% of users. Keep building those green habits!';
   else msg = '🌱 Every action counts! Keep tracking daily to climb the leaderboard.';
   document.getElementById('yrMsg').textContent = msg;
-  var container = document.getElementById('lbFullRows');
+  const container = document.getElementById('lbFullRows');
   container.innerHTML = '';
   sorted.slice(3, 10).forEach(function(u, i) {
-    var row = document.createElement('div');
+    const row = document.createElement('div');
     row.className = 'lb-row' + (u.isUser ? ' you-row' : '');
-    row.innerHTML = '<div class="lb-rank">' + (i + 4) + '</div><div class="lb-avatar">' + u.avatar + '</div><div class="lb-name">' + u.name + '</div><div class="lb-score">' + formatSaved(u.score) + '</div>';
+    row.innerHTML = '<div class="lb-rank">' + sanitize(i + 4) + '</div><div class="lb-avatar">' + sanitize(u.avatar) + '</div><div class="lb-name">' + sanitize(u.name) + '</div><div class="lb-score">' + sanitize(formatSaved(u.score)) + '</div>';
     container.appendChild(row);
   });
 }
@@ -1629,17 +1638,17 @@ function init3D() {
     update3DWorld();
     return;
   }
-  var container = document.getElementById('three-container');
+  const container = document.getElementById('three-container');
   if (!container) return;
   
-  var width = container.clientWidth || 400;
-  var height = container.clientHeight || 240;
+  const width = container.clientWidth || 400;
+  const height = container.clientHeight || 240;
   
   scene = new THREE.Scene();
   
   // Isometric Orthographic Camera
-  var aspect = width / height;
-  var d = 4.8;
+  const aspect = width / height;
+  const d = 4.8;
   camera = new THREE.OrthographicCamera(-d * aspect, d * aspect, d, -d, 1, 1000);
   camera.position.set(10, 8.5, 10);
   camera.lookAt(0, 0.4, 0);
@@ -1653,17 +1662,17 @@ function init3D() {
   container.appendChild(renderer.domElement);
   
   // Lights
-  var ambientLight = new THREE.AmbientLight(0xffffff, 0.85);
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.85);
   scene.add(ambientLight);
   
-  var dirLight = new THREE.DirectionalLight(0xffffff, 0.6);
+  const dirLight = new THREE.DirectionalLight(0xffffff, 0.6);
   dirLight.position.set(8, 12, 5);
   dirLight.castShadow = true;
   dirLight.shadow.mapSize.width = 512;
   dirLight.shadow.mapSize.height = 512;
   dirLight.shadow.camera.near = 0.5;
   dirLight.shadow.camera.far = 30;
-  var dShadow = 6;
+  const dShadow = 6;
   dirLight.shadow.camera.left = -dShadow;
   dirLight.shadow.camera.right = dShadow;
   dirLight.shadow.camera.top = dShadow;
@@ -1674,53 +1683,53 @@ function init3D() {
   scene.add(islandGroup);
   
   // Create Base Island
-  var grassGeom = new THREE.CylinderGeometry(3.6, 3.4, 0.3, 20);
-  var grassMat = new THREE.MeshStandardMaterial({ color: 0x8ed462, roughness: 0.9, flatShading: true });
-  var grass = new THREE.Mesh(grassGeom, grassMat);
+  const grassGeom = new THREE.CylinderGeometry(3.6, 3.4, 0.3, 20);
+  const grassMat = new THREE.MeshStandardMaterial({ color: 0x8ed462, roughness: 0.9, flatShading: true });
+  const grass = new THREE.Mesh(grassGeom, grassMat);
   grass.position.y = 0.15;
   grass.receiveShadow = true;
   islandGroup.add(grass);
   
-  var soilGeom = new THREE.CylinderGeometry(3.4, 3.1, 1.2, 20);
-  var soilMat = new THREE.MeshStandardMaterial({ color: 0x8B5A2B, roughness: 0.9, flatShading: true });
-  var soil = new THREE.Mesh(soilGeom, soilMat);
+  const soilGeom = new THREE.CylinderGeometry(3.4, 3.1, 1.2, 20);
+  const soilMat = new THREE.MeshStandardMaterial({ color: 0x8B5A2B, roughness: 0.9, flatShading: true });
+  const soil = new THREE.Mesh(soilGeom, soilMat);
   soil.position.y = -0.6;
   soil.receiveShadow = true;
   islandGroup.add(soil);
   
   // Create Player Cottage
-  var houseGroup = new THREE.Group();
+  const houseGroup = new THREE.Group();
   houseGroup.position.set(0, 0.3, 0);
   
-  var bodyGeom = new THREE.BoxGeometry(1.0, 0.7, 0.85);
-  var bodyMat = new THREE.MeshStandardMaterial({ color: 0xf5f1e4, roughness: 0.8 });
-  var body = new THREE.Mesh(bodyGeom, bodyMat);
+  const bodyGeom = new THREE.BoxGeometry(1.0, 0.7, 0.85);
+  const bodyMat = new THREE.MeshStandardMaterial({ color: 0xf5f1e4, roughness: 0.8 });
+  const body = new THREE.Mesh(bodyGeom, bodyMat);
   body.position.y = 0.35;
   body.castShadow = true;
   body.receiveShadow = true;
   houseGroup.add(body);
   
   // Roof (4-sided cone)
-  var roofGeom = new THREE.ConeGeometry(0.9, 0.6, 4);
-  var roofMat = new THREE.MeshStandardMaterial({ color: 0xff705d, roughness: 0.7 });
-  var roof = new THREE.Mesh(roofGeom, roofMat);
+  const roofGeom = new THREE.ConeGeometry(0.9, 0.6, 4);
+  const roofMat = new THREE.MeshStandardMaterial({ color: 0xff705d, roughness: 0.7 });
+  const roof = new THREE.Mesh(roofGeom, roofMat);
   roof.position.y = 0.9;
   roof.rotation.y = Math.PI / 4;
   roof.castShadow = true;
   houseGroup.add(roof);
   
   // Door
-  var doorGeom = new THREE.BoxGeometry(0.25, 0.45, 0.05);
-  var doorMat = new THREE.MeshStandardMaterial({ color: 0x8B5A2B });
-  var door = new THREE.Mesh(doorGeom, doorMat);
+  const doorGeom = new THREE.BoxGeometry(0.25, 0.45, 0.05);
+  const doorMat = new THREE.MeshStandardMaterial({ color: 0x8B5A2B });
+  const door = new THREE.Mesh(doorGeom, doorMat);
   door.position.set(0, 0.225, 0.43);
   houseGroup.add(door);
   
   islandGroup.add(houseGroup);
   
   // Interactive Drag-to-Rotate
-  var isDragging = false;
-  var previousMousePosition = { x: 0 };
+  let isDragging = false;
+  const previousMousePosition = { x: 0 };
   
   function handleDown(xVal) {
     isDragging = true;
@@ -1730,7 +1739,7 @@ function init3D() {
   
   function handleMove(xVal) {
     if (!isDragging) return;
-    var deltaX = xVal - previousMousePosition.x;
+    const deltaX = xVal - previousMousePosition.x;
     islandGroup.rotation.y += deltaX * 0.007;
     previousMousePosition.x = xVal;
   }
@@ -1766,11 +1775,11 @@ function update3DWorld() {
   turbineRotors = [];
   rotatingCarGroup = null;
   
-  var today = todayKey();
-  var todayActions = state.actions[today] || {};
+  const today = todayKey();
+  const todayActions = state.actions[today] || {};
   
   // Preset positions for trees (radius < 3.2, avoids center house)
-  var treePositions = [
+  const treePositions = [
     { x: -1.8, z: 1.8 },
     { x: 1.8, z: -1.8 },
     { x: -2.2, z: -1.5 },
@@ -1784,13 +1793,13 @@ function update3DWorld() {
   ];
   
   // Spawn trees based on Tree Equivalent
-  var totalSaved = getAllTimeSaved();
-  var treesEquiv = Math.round(totalSaved / 1000 / 21 * 12);
-  var treeCount = Math.max(1, Math.min(treePositions.length, treesEquiv));
+  const totalSaved = getAllTimeSaved();
+  const treesEquiv = Math.round(totalSaved / 1000 / 21 * 12);
+  const treeCount = Math.max(1, Math.min(treePositions.length, treesEquiv));
   
-  for (var i = 0; i < treeCount; i++) {
-    var pos = treePositions[i];
-    var tree = create3DTree();
+  for (let i = 0; i < treeCount; i++) {
+    const pos = treePositions[i];
+    const tree = create3DTree();
     tree.position.set(pos.x, 0.3, pos.z);
     islandGroup.add(tree);
     dynamicMeshes.push(tree);
@@ -1798,17 +1807,17 @@ function update3DWorld() {
   
   // Spawn wind turbines
   // Lights off or minimal electricity Consumptions spawns a turbine
-  var hasLightsOff = !!todayActions['lights_off'];
-  var hasLowElec = state.profile.electricity < 150;
+  const hasLightsOff = !!todayActions['lights_off'];
+  const hasLowElec = state.profile.electricity < 150;
   
   if (hasLightsOff || hasLowElec) {
-    var turbine1 = create3DTurbine();
+    const turbine1 = create3DTurbine();
     turbine1.position.set(-2, 0.3, -2);
     islandGroup.add(turbine1);
     dynamicMeshes.push(turbine1);
     
     if (hasLightsOff && hasLowElec) {
-      var turbine2 = create3DTurbine();
+      const turbine2 = create3DTurbine();
       turbine2.position.set(2, 0.3, 2);
       islandGroup.add(turbine2);
       dynamicMeshes.push(turbine2);
@@ -1817,7 +1826,7 @@ function update3DWorld() {
   
   // Spawn solar panels if they air-dried clothes
   if (!!todayActions['air_dry']) {
-    var solar = create3DSolarPanel();
+    const solar = create3DSolarPanel();
     solar.position.set(2.2, 0.3, -0.6);
     islandGroup.add(solar);
     dynamicMeshes.push(solar);
@@ -1826,28 +1835,28 @@ function update3DWorld() {
   // Spawn electric car driving on a ring road if public transport / walk cycle checked
   if (!!todayActions['public_trans'] || !!todayActions['walk_bike']) {
     // Road Ring Visual
-    var roadGeom = new THREE.RingGeometry(2.4, 2.6, 24);
-    var roadMat = new THREE.MeshBasicMaterial({ color: 0x2c2e2a, side: THREE.DoubleSide });
-    var road = new THREE.Mesh(roadGeom, roadMat);
+    const roadGeom = new THREE.RingGeometry(2.4, 2.6, 24);
+    const roadMat = new THREE.MeshBasicMaterial({ color: 0x2c2e2a, side: THREE.DoubleSide });
+    const road = new THREE.Mesh(roadGeom, roadMat);
     road.rotation.x = Math.PI / 2;
     road.position.y = 0.31;
     islandGroup.add(road);
     dynamicMeshes.push(road);
     
     // Tiny box car
-    var carContainer = new THREE.Group();
+    const carContainer = new THREE.Group();
     carContainer.position.y = 0.3;
     
-    var carBodyGeom = new THREE.BoxGeometry(0.35, 0.18, 0.2);
-    var carBodyMat = new THREE.MeshStandardMaterial({ color: 0x2ba0ff, roughness: 0.5 });
-    var carBody = new THREE.Mesh(carBodyGeom, carBodyMat);
+    const carBodyGeom = new THREE.BoxGeometry(0.35, 0.18, 0.2);
+    const carBodyMat = new THREE.MeshStandardMaterial({ color: 0x2ba0ff, roughness: 0.5 });
+    const carBody = new THREE.Mesh(carBodyGeom, carBodyMat);
     carBody.position.set(2.5, 0.1, 0); // Position on the road ring radius 2.5
     carBody.castShadow = true;
     carContainer.add(carBody);
     
-    var cabinGeom = new THREE.BoxGeometry(0.2, 0.12, 0.16);
-    var cabinMat = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.5 });
-    var cabin = new THREE.Mesh(cabinGeom, cabinMat);
+    const cabinGeom = new THREE.BoxGeometry(0.2, 0.12, 0.16);
+    const cabinMat = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.5 });
+    const cabin = new THREE.Mesh(cabinGeom, cabinMat);
     cabin.position.set(2.5, 0.22, 0);
     cabin.castShadow = true;
     carContainer.add(cabin);
@@ -1858,34 +1867,34 @@ function update3DWorld() {
   }
   
   // Update UI Stats tag
-  var statsTag = document.getElementById('islandStats');
+  const statsTag = document.getElementById('islandStats');
   if (statsTag) {
-    statsTag.innerHTML = '<span>🌳 ' + treeCount + ' trees | 🔥 ' + (state.streak || 0) + ' streak</span>';
+    statsTag.innerHTML = '<span>🌳 ' + sanitize(treeCount) + ' trees | 🔥 ' + sanitize(state.streak || 0) + ' streak</span>';
   }
 }
 
 function create3DTree() {
-  var group = new THREE.Group();
+  const group = new THREE.Group();
   
   // Trunk
-  var trunkGeom = new THREE.CylinderGeometry(0.06, 0.08, 0.6, 5);
-  var trunkMat = new THREE.MeshStandardMaterial({ color: 0x5c4033, roughness: 0.9 });
-  var trunk = new THREE.Mesh(trunkGeom, trunkMat);
+  const trunkGeom = new THREE.CylinderGeometry(0.06, 0.08, 0.6, 5);
+  const trunkMat = new THREE.MeshStandardMaterial({ color: 0x5c4033, roughness: 0.9 });
+  const trunk = new THREE.Mesh(trunkGeom, trunkMat);
   trunk.position.y = 0.3;
   trunk.castShadow = true;
   group.add(trunk);
   
   // Low-poly stacked foliage (Cones)
-  var foliageMat = new THREE.MeshStandardMaterial({ color: 0x6fa64d, roughness: 0.9, flatShading: true });
+  const foliageMat = new THREE.MeshStandardMaterial({ color: 0x6fa64d, roughness: 0.9, flatShading: true });
   
-  var cone1Geom = new THREE.ConeGeometry(0.35, 0.5, 5);
-  var cone1 = new THREE.Mesh(cone1Geom, foliageMat);
+  const cone1Geom = new THREE.ConeGeometry(0.35, 0.5, 5);
+  const cone1 = new THREE.Mesh(cone1Geom, foliageMat);
   cone1.position.y = 0.65;
   cone1.castShadow = true;
   group.add(cone1);
   
-  var cone2Geom = new THREE.ConeGeometry(0.25, 0.4, 5);
-  var cone2 = new THREE.Mesh(cone2Geom, foliageMat);
+  const cone2Geom = new THREE.ConeGeometry(0.25, 0.4, 5);
+  const cone2 = new THREE.Mesh(cone2Geom, foliageMat);
   cone2.position.y = 0.95;
   cone2.castShadow = true;
   group.add(cone2);
@@ -1894,33 +1903,33 @@ function create3DTree() {
 }
 
 function create3DTurbine() {
-  var group = new THREE.Group();
+  const group = new THREE.Group();
   
   // Tower
-  var towerGeom = new THREE.CylinderGeometry(0.04, 0.07, 1.8, 6);
-  var towerMat = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.6 });
-  var tower = new THREE.Mesh(towerGeom, towerMat);
+  const towerGeom = new THREE.CylinderGeometry(0.04, 0.07, 1.8, 6);
+  const towerMat = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.6 });
+  const tower = new THREE.Mesh(towerGeom, towerMat);
   tower.position.y = 0.9;
   tower.castShadow = true;
   group.add(tower);
   
   // Rotor (hub and blades)
-  var rotor = new THREE.Group();
+  const rotor = new THREE.Group();
   rotor.position.set(0, 1.8, 0.06);
   
-  var hubGeom = new THREE.SphereGeometry(0.07, 6, 6);
-  var hubMat = new THREE.MeshStandardMaterial({ color: 0x2c2e2a });
-  var hub = new THREE.Mesh(hubGeom, hubMat);
+  const hubGeom = new THREE.SphereGeometry(0.07, 6, 6);
+  const hubMat = new THREE.MeshStandardMaterial({ color: 0x2c2e2a });
+  const hub = new THREE.Mesh(hubGeom, hubMat);
   rotor.add(hub);
   
   // Blades
-  var bladeMat = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.5 });
-  for (var i = 0; i < 3; i++) {
-    var bladeGeom = new THREE.BoxGeometry(0.05, 0.6, 0.015);
-    var blade = new THREE.Mesh(bladeGeom, bladeMat);
+  const bladeMat = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.5 });
+  for (let i = 0; i < 3; i++) {
+    const bladeGeom = new THREE.BoxGeometry(0.05, 0.6, 0.015);
+    const blade = new THREE.Mesh(bladeGeom, bladeMat);
     blade.position.y = 0.3;
     
-    var pivot = new THREE.Group();
+    const pivot = new THREE.Group();
     pivot.rotation.z = (i * Math.PI * 2) / 3;
     pivot.add(blade);
     rotor.add(pivot);
@@ -1933,19 +1942,19 @@ function create3DTurbine() {
 }
 
 function create3DSolarPanel() {
-  var group = new THREE.Group();
+  const group = new THREE.Group();
   
   // Stand
-  var standGeom = new THREE.CylinderGeometry(0.03, 0.03, 0.3, 4);
-  var standMat = new THREE.MeshStandardMaterial({ color: 0x2c2e2a });
-  var stand = new THREE.Mesh(standGeom, standMat);
+  const standGeom = new THREE.CylinderGeometry(0.03, 0.03, 0.3, 4);
+  const standMat = new THREE.MeshStandardMaterial({ color: 0x2c2e2a });
+  const stand = new THREE.Mesh(standGeom, standMat);
   stand.position.y = 0.15;
   group.add(stand);
   
   // Plate
-  var plateGeom = new THREE.BoxGeometry(0.5, 0.03, 0.4);
-  var plateMat = new THREE.MeshStandardMaterial({ color: 0x2ba0ff, metalness: 0.7, roughness: 0.2 });
-  var plate = new THREE.Mesh(plateGeom, plateMat);
+  const plateGeom = new THREE.BoxGeometry(0.5, 0.03, 0.4);
+  const plateMat = new THREE.MeshStandardMaterial({ color: 0x2ba0ff, metalness: 0.7, roughness: 0.2 });
+  const plate = new THREE.Mesh(plateGeom, plateMat);
   plate.position.set(0, 0.3, 0);
   plate.rotation.x = Math.PI / 6;
   plate.castShadow = true;
@@ -1977,7 +1986,23 @@ function animate() {
   }
 }
 
+
+// Basic smoke tests
+function runTests() {
+  console.assert(typeof calculateFootprint === 'function', 'calculateFootprint exists');
+  console.assert(TRANSPORT_FACTORS['car'] === 0.171, 'car factor correct');
+  console.assert(formatSaved(1500) === '1.5 kg', 'formatSaved kg works');
+  console.assert(formatSaved(500) === '500 g', 'formatSaved g works');
+  console.assert(getTodaySaved() >= 0, 'getTodaySaved returns non-negative');
+  console.assert(todayKey().length === 10, 'todayKey format correct');
+  console.assert(Object.keys(DIET_MONTHLY).length === 4, 'diet options complete');
+  console.assert(ECO_ACTIONS.length === 10, 'all eco actions present');
+  console.log('✅ All EcoTrace tests passed');
+}
+runTests();
+
 document.addEventListener('DOMContentLoaded', init);
+
 </script>
 </body>
 </html>
