@@ -1,5 +1,7 @@
 # 🌍 EcoTrace — Personal Carbon Footprint Tracker
 
+🔗 **Live Demo**: [ishan12369.github.io/EcoTrace](https://ishan12369.github.io/EcoTrace/)
+
 EcoTrace is a gorgeous, fully-featured, single-page carbon footprint tracker. It helps individuals understand, track, and reduce their carbon emissions through daily sustainable choices, smart custom insights, and a gamified **interactive 3D isometric Eco-Island**.
 
 The user interface borrows the clean, bouncily animated, flat-vector aesthetic of [MindMarket](https://mindmarket.com/) (bold charcoal outlines, cream sheet overlays, and pastel capsules) and adapts seamlessly from mobile viewports to desktop split-column views.
